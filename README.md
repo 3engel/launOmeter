@@ -47,4 +47,3 @@ Das gebaute Projekt befindet sich im `dist/`-Verzeichnis.
 MIT License. Siehe [LICENSE](LICENSE).
 
 ---
-Entwickelt von Familie Engel. Quellcode auf [GitHub](https://github.com/3engel/launOmeter).

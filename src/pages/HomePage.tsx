@@ -116,7 +116,10 @@ export function HomePage() {
           </button>
         </div>
       </header>
-      <AdminLoginDialog open={adminOpen} onOpenChange={setAdminOpen} />
+      <AdminLoginDialog
+        open={adminOpen}
+        onOpenChange={setAdminOpen}
+      />
 
       <main className="relative flex-1 flex items-stretch pb-40">
         <div
@@ -157,16 +160,7 @@ export function HomePage() {
       <footer>
         <div className="text-right text-sm text-muted-foreground py-4 px-4">
           <p>
-            Entwickelt von{" "}
-            <a
-              href="https://michael-lang.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-foreground transition-colors"
-            >
-              Familie Engel
-            </a>
-            . Quellcode auf{" "}
+            Entwickelt von Familie Engel. Quellcode auf{" "}
             <a
               href="https://github.com/3engel/launOmeter"
               target="_blank"
@@ -178,7 +172,6 @@ export function HomePage() {
             .
           </p>
         </div>
-
       </footer>
     </div>
   );
