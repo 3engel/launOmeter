@@ -17,7 +17,7 @@ import {
 import { getDayKey } from "@/lib/dates";
 import { getRemainingLockMs, setLock } from "@/lib/lock";
 import { hasAdminAuth } from "@/lib/admin";
-import { Settings } from "lucide-react";
+import { Fullscreen, Settings } from "lucide-react";
 
 type View = "loading" | "role" | "mood" | "lock" | "full";
 
@@ -90,6 +90,16 @@ export function HomePage() {
     setView("lock");
   };
 
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.log(`Fehler beim Aktivieren des Vollbildmodus: ${err.message}`);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  };
+
   return (
     <div className="relative min-h-screen flex flex-col overflow-hidden">
       <SchoolBackground />
@@ -113,6 +123,14 @@ export function HomePage() {
             className="text-muted-foreground hover:text-foreground transition-colors p-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <Settings />
+          </button>
+          <button
+            type="button"
+            onClick={toggleFullscreen}
+            title="Vollbildmodus"
+            className="text-muted-foreground hover:text-foreground transition-colors p-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <Fullscreen />
           </button>
         </div>
       </header>
