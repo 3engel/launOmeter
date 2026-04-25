@@ -11,7 +11,7 @@ import { MOOD_OPTIONS } from "@/lib/moods";
 import { getVotesByDay } from "@/lib/db";
 import { getDayKey } from "@/lib/dates";
 import { aggregate } from "@/lib/stats";
-import { cn } from "@/lib/utils";
+import { cn, formatNumber } from "@/lib/utils";
 import { Badge } from "./ui/badge";
 
 interface Props {
@@ -197,7 +197,7 @@ function Thermometer({
         fontWeight="700"
         fill={hasData ? "white" : "#475569"}
       >
-        {hasData ? average.toFixed(2) : "—"}
+        {hasData ? formatNumber(average) : "—"}
       </text>
     </svg>
   );

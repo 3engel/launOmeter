@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/table";
 import { MOOD_OPTIONS } from "@/lib/moods";
 import type { AggregatedStats, RoleStats } from "@/lib/stats";
-import { cn } from "@/lib/utils";
+import { cn, formatNumber } from "@/lib/utils";
 
 export interface StatsRow {
   label: string;
@@ -32,7 +32,7 @@ function formatPercent(p: number): string {
 }
 
 function formatAvg(avg: number, total: number): string {
-  return total === 0 ? "—" : avg.toFixed(2);
+  return total === 0 ? "—" : formatNumber(avg);
 }
 
 function RoleRow({
