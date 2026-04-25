@@ -1,0 +1,209 @@
+<svg viewBox="0 0 1845 360" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- W dots clip -->
+    <pattern id="dots" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse">
+      <circle cx="22" cy="22" r="10" fill="#f4c430"></circle>
+    </pattern>
+    <!-- Rainbow horizontal stripes for I -->
+    <linearGradient id="rainbowH" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e74c3c"></stop>
+      <stop offset="20%" stop-color="#e88a3b"></stop>
+      <stop offset="40%" stop-color="#f4c430"></stop>
+      <stop offset="60%" stop-color="#3fa55a"></stop>
+      <stop offset="80%" stop-color="#3a7fbf"></stop>
+      <stop offset="100%" stop-color="#7e6bff"></stop>
+    </linearGradient>
+    <!-- 45° rainbow stripes for R -->
+    <pattern id="rainbow45" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="20" height="120" x="0" fill="#e74c3c"></rect>
+      <rect width="20" height="120" x="20" fill="#e88a3b"></rect>
+      <rect width="20" height="120" x="40" fill="#f4c430"></rect>
+      <rect width="20" height="120" x="60" fill="#3fa55a"></rect>
+      <rect width="20" height="120" x="80" fill="#3a7fbf"></rect>
+      <rect width="20" height="120" x="100" fill="#7e6bff"></rect>
+    </pattern>
+    <!-- Crayon-y filter (slight roughness) -->
+    <filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence baseFrequency="0.9" numOctaves="1" seed="3"></feTurbulence>
+      <feDisplacementMap in="SourceGraphic" scale="1.4"></feDisplacementMap>
+    </filter>
+    <style>
+      .ltr{font-family:'Caveat Brush',cursive;font-size:260px;stroke:#161616;stroke-width:8;paint-order:stroke fill;}
+    </style>
+  </defs>
+
+  <!-- ====== ICH (x: 0–760) ====== -->
+  <!-- I = Schüler im Comic-Stil: grünes Cape (umgedreht/Mütze), rote Jacke, Schulranzen -->
+  <g transform="translate(20,20)" stroke="#161616" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+      <!-- Cape hinten -->
+      <path d="M55 120 Q10 180 30 290 Q40 300 60 296 Q70 200 75 130 Z" fill="#3fa55a"></path>
+    <path d="M48 200 Q35 240 38 285" fill="none" stroke-width="3"></path>
+    <!-- Beine + Schuhe (hinten) -->
+    <rect x="55" y="290" width="22" height="50" fill="#2c2c2c"></rect>
+    <rect x="83" y="290" width="22" height="50" fill="#2c2c2c"></rect>
+    <ellipse cx="64" cy="340" rx="18" ry="9" fill="#161616"></ellipse>
+    <ellipse cx="93" cy="340" rx="18" ry="9" fill="#161616"></ellipse>
+    <!-- Rote Jacke (Cel-Stil) -->
+    <path d="M30 130 Q22 210 35 295 Q70 305 105 295 Q118 210 110 130 Q90 144 70 144 Q50 144 30 130 Z" fill="#d94a3a"></path>
+    <!-- Jacken-Schatten -->
+    <path d="M30 130 Q22 210 35 295 L48 290 Q42 210 48 140 Z" fill="#a8362a" stroke="none"></path>
+    <!-- Reißverschluss -->
+    <line x1="70" y1="148" x2="70" y2="290" stroke-width="3"></line>
+    <!-- Mütze (grünes umgedrehtes Cape – Spitze nach oben) -->
+    <path d="M22 78 L118 78 Q70 -8 22 78 Z" fill="#3fa55a"></path>
+    <ellipse cx="100" cy="68" rx="6" ry="4" fill="#65c47e" stroke="none"></ellipse>
+    <!-- Kopf (groß, comic) -->
+    <circle cx="70" cy="100" r="42" fill="#fbe1c4"></circle>
+    <!-- Ohren -->
+    <ellipse cx="30" cy="105" rx="6" ry="9" fill="#fbe1c4"></ellipse>
+    <ellipse cx="110" cy="105" rx="6" ry="9" fill="#fbe1c4"></ellipse>
+    <!-- Mützen-Rand vorne über Stirn -->
+    <path d="M28 82 Q70 96 112 82 Q70 76 28 82 Z" fill="#2c8243" stroke-width="5"></path>
+    <!-- Wangen-Blush -->
+    <ellipse cx="44" cy="118" rx="9" ry="5" fill="#f49aa8" stroke="none" opacity=".75"></ellipse>
+    <ellipse cx="96" cy="118" rx="9" ry="5" fill="#f49aa8" stroke="none" opacity=".75"></ellipse>
+    <!-- Augen groß, schauen links -->
+    <ellipse cx="52" cy="102" rx="9" ry="11" fill="#fff"></ellipse>
+    <ellipse cx="78" cy="102" rx="9" ry="11" fill="#fff"></ellipse>
+    <ellipse cx="48" cy="104" rx="5.5" ry="7.5" fill="#161616" stroke="none"></ellipse>
+    <ellipse cx="74" cy="104" rx="5.5" ry="7.5" fill="#161616" stroke="none"></ellipse>
+    <!-- Glanzpunkte -->
+    <circle cx="46" cy="100" r="2" fill="#fff" stroke="none"></circle>
+    <circle cx="72" cy="100" r="2" fill="#fff" stroke="none"></circle>
+    <!-- Augenbrauen -->
+    <path d="M42 86 Q52 82 60 86" fill="none" stroke-width="4"></path>
+    <path d="M68 86 Q78 82 88 86" fill="none" stroke-width="4"></path>
+    <!-- Mund offen lächelnd -->
+    <path d="M56 124 Q70 138 84 124 Q70 132 56 124 Z" fill="#a8362a"></path>
+    <!-- Linker Arm + Schultasche (vorne) -->
+    <path d="M30 160 Q12 210 18 270" fill="#d94a3a" stroke-width="6"></path>
+    <rect x="-6" y="262" width="50" height="40" rx="6" fill="#7a4a2a"></rect>
+    <rect x="-6" y="262" width="50" height="14" rx="4" fill="#5d3820" stroke="none"></rect>
+    <path d="M2 262 Q19 246 36 262" fill="none" stroke-width="5"></path>
+  </g>
+
+  <!-- C gelb -->
+  <text class="ltr" x="168" y="280" fill="#f4c430">C</text>
+  <!-- H blau -->
+  <text class="ltr" x="313" y="280" fill="#3a7fbf">H</text>
+  <!-- + rot -->
+  <text x="540" y="260" font-family="Caveat Brush,cursive" font-size="200" fill="#d94a3a" stroke="#161616" stroke-width="6" paint-order="stroke fill">+</text>
+  <!-- D grün -->
+  <text class="ltr" x="651" y="280" fill="#3fa55a">D</text>
+
+  <!-- ====== U: zwei Figuren im Comic-Stil, die sich anschauen ====== -->
+  <g transform="translate(820,20)" stroke="#161616" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Bodenlinie zwischen den Schuhen — schließt das U unten -->
+    <line x1="94" y1="338" x2="215" y2="338" stroke="#161616" stroke-width="6" stroke-linecap="round"></line>
+    <!-- Schüler links: oranges Oberteil + Schulranzen -->
+    <g>
+      <!-- Beine + Schuhe -->
+      <rect x="42" y="278" width="20" height="58" fill="#2c2c2c"></rect>
+      <rect x="68" y="278" width="20" height="58" fill="#2c2c2c"></rect>
+      <ellipse cx="51" cy="338" rx="16" ry="8" fill="#161616"></ellipse>
+      <ellipse cx="78" cy="338" rx="16" ry="8" fill="#161616"></ellipse>
+      <!-- Schulranzen hinten -->
+      <rect x="20" y="150" width="22" height="60" rx="6" fill="#7a4a2a"></rect>
+      <!-- Oranges Oberteil -->
+      <path d="M28 130 Q20 210 30 286 Q60 295 92 286 Q104 210 96 130 Q80 144 62 144 Q44 144 28 130 Z" fill="#e88a3b"></path>
+      <path d="M28 130 Q20 210 30 286 L46 282 Q40 210 46 140 Z" fill="#b8651e" stroke="none"></path>
+      <!-- Schulranzen Riemen über Schultern -->
+      <path d="M38 130 Q30 196 38 270" fill="none" stroke="#5d3820" stroke-width="6"></path>
+      <path d="M86 130 Q94 196 86 270" fill="none" stroke="#5d3820" stroke-width="6"></path>
+      <!-- Hand vorne (Geste) -->
+      <circle cx="96" cy="220" r="9" fill="#fbe1c4"></circle>
+      <!-- Kopf -->
+      <circle cx="62" cy="92" r="40" fill="#fbe1c4"></circle>
+      <ellipse cx="22" cy="98" rx="6" ry="9" fill="#fbe1c4"></ellipse>
+      <ellipse cx="102" cy="98" rx="6" ry="9" fill="#fbe1c4"></ellipse>
+      <!-- wuschelige dunkle Haare -->
+      <path d="M22 88 Q24 38 62 32 Q100 38 102 88 Q92 70 80 72 Q70 60 60 70 Q48 60 38 70 Q30 72 22 88 Z" fill="#2c2c2c"></path>
+      <!-- Wangen-Blush -->
+      <ellipse cx="34" cy="110" rx="8" ry="4" fill="#f49aa8" stroke="none" opacity=".75"></ellipse>
+      <ellipse cx="90" cy="110" rx="8" ry="4" fill="#f49aa8" stroke="none" opacity=".75"></ellipse>
+      <!-- Augen schauen rechts (zur Schülerin) -->
+      <ellipse cx="52" cy="96" rx="9" ry="11" fill="#fff"></ellipse>
+      <ellipse cx="78" cy="96" rx="9" ry="11" fill="#fff"></ellipse>
+      <ellipse cx="56" cy="98" rx="5" ry="7" fill="#161616" stroke="none"></ellipse>
+      <ellipse cx="82" cy="98" rx="5" ry="7" fill="#161616" stroke="none"></ellipse>
+      <circle cx="58" cy="95" r="2" fill="#fff" stroke="none"></circle>
+      <circle cx="84" cy="95" r="2" fill="#fff" stroke="none"></circle>
+      <!-- Augenbrauen -->
+      <path d="M44 80 Q52 76 60 80" fill="none" stroke-width="4"></path>
+      <path d="M70 80 Q78 76 86 80" fill="none" stroke-width="4"></path>
+      <!-- Mund -->
+      <path d="M52 116 Q64 130 76 116 Q64 124 52 116 Z" fill="#a8362a"></path>
+    </g>
+    <!-- Schülerin rechts: rosa Kleid, grüne Ärmel -->
+    <g transform="translate(140,0)">
+      <!-- Beine + Schuhe -->
+      <rect x="48" y="278" width="14" height="58" fill="#fbe1c4"></rect>
+      <rect x="68" y="278" width="14" height="58" fill="#fbe1c4"></rect>
+      <ellipse cx="55" cy="338" rx="13" ry="6" fill="#161616"></ellipse>
+      <ellipse cx="75" cy="338" rx="13" ry="6" fill="#161616"></ellipse>
+      <!-- Lange Haare hinten -->
+      <path d="M22 100 Q18 36 64 28 Q108 36 104 100 L116 220 L14 220 Z" fill="#2c2c2c"></path>
+      <!-- Grüne Ärmel -->
+      <path d="M22 134 Q14 196 26 226 L46 220 Q42 184 46 142 Z" fill="#3fa55a"></path>
+      <path d="M104 134 Q114 196 102 226 L82 220 Q86 184 82 142 Z" fill="#3fa55a"></path>
+      <!-- Rosa Kleid (A-Linie) -->
+      <path d="M38 138 Q34 200 18 286 Q64 296 110 286 Q94 200 90 138 Q78 150 64 150 Q50 150 38 138 Z" fill="#f49aa8"></path>
+      <path d="M38 138 Q34 200 18 286 L36 282 Q40 200 46 144 Z" fill="#d77284" stroke="none"></path>
+      <!-- Hände -->
+      <circle cx="32" cy="220" r="9" fill="#fbe1c4"></circle>
+      <circle cx="96" cy="220" r="9" fill="#fbe1c4"></circle>
+      <!-- Kopf -->
+      <circle cx="64" cy="92" r="40" fill="#fbe1c4"></circle>
+      <ellipse cx="24" cy="98" rx="6" ry="9" fill="#fbe1c4"></ellipse>
+      <ellipse cx="104" cy="98" rx="6" ry="9" fill="#fbe1c4"></ellipse>
+      <!-- Pony -->
+      <path d="M24 86 Q26 40 64 34 Q102 40 104 86 Q92 66 78 70 Q66 60 56 70 Q42 66 24 86 Z" fill="#2c2c2c"></path>
+      <!-- Wangen-Blush -->
+      <ellipse cx="34" cy="110" rx="8" ry="4" fill="#f49aa8" stroke="none" opacity=".9"></ellipse>
+      <ellipse cx="92" cy="110" rx="8" ry="4" fill="#f49aa8" stroke="none" opacity=".9"></ellipse>
+      <!-- Augen schauen links -->
+      <ellipse cx="48" cy="96" rx="9" ry="11" fill="#fff"></ellipse>
+      <ellipse cx="76" cy="96" rx="9" ry="11" fill="#fff"></ellipse>
+      <ellipse cx="44" cy="98" rx="5" ry="7" fill="#161616" stroke="none"></ellipse>
+      <ellipse cx="72" cy="98" rx="5" ry="7" fill="#161616" stroke="none"></ellipse>
+      <circle cx="42" cy="95" r="2" fill="#fff" stroke="none"></circle>
+      <circle cx="70" cy="95" r="2" fill="#fff" stroke="none"></circle>
+      <!-- Lange Wimpern -->
+      <path d="M40 88 L36 84 M48 86 L48 82 M56 88 L60 84" stroke-width="3" fill="none"></path>
+      <path d="M68 88 L64 84 M76 86 L76 82 M84 88 L88 84" stroke-width="3" fill="none"></path>
+      <!-- Augenbrauen -->
+      <path d="M40 80 Q48 76 56 80" fill="none" stroke-width="4"></path>
+      <path d="M68 80 Q76 76 84 80" fill="none" stroke-width="4"></path>
+      <!-- Mund -->
+      <path d="M52 118 Q62 130 72 118 Q62 124 52 118 Z" fill="#a8362a"></path>
+      <!-- Schleife im Haar -->
+      <path d="M86 38 L100 30 L100 50 Z M86 38 L100 46 L92 38 Z" fill="#d94a3a"></path>
+    </g>
+  </g>
+
+  <!-- = hellgrün -->
+  <g transform="translate(1130,150)" >
+    <rect x="0" y="0" width="120" height="22" rx="4" fill="#9bd07a" stroke="#161616" stroke-width="5"></rect>
+    <rect x="0" y="44" width="120" height="22" rx="4" fill="#9bd07a" stroke="#161616" stroke-width="5"></rect>
+  </g>
+
+  <!-- ====== WIR (x: 1280–1960) ====== -->
+  <!-- W: hellrot mit gelben Punkten -->
+  <defs>
+    <mask id="wMask" data-src-loc="11206:11223:11311" data-om-id="5d211e0f:23">
+      <text class="ltr" x="1280" y="280" fill="#fff" stroke="none" data-src-loc="11230:11291:11299" data-om-id="5d211e0f:24">W</text>
+    </mask>
+  </defs>
+  <!-- Basisfarbe -->
+  <text class="ltr" x="1280" y="280" fill="#f49aa8">W</text>
+  <!-- Punkte nur innerhalb des W (überdecken Outline NICHT, da nur innerhalb des Glyph-Fills) -->
+  <g mask="url(#wMask)">
+    <rect x="1260" y="50" width="260" height="260" fill="url(#dots)"></rect>
+  </g>
+
+  <!-- I horizontaler Regenbogen -->
+  <text class="ltr" x="1550" y="280" fill="url(#rainbowH)">I</text>
+
+  <!-- R 45° Regenbogen -->
+  <text class="ltr" x="1680" y="280" fill="url(#rainbow45)">R</text>
+</svg>

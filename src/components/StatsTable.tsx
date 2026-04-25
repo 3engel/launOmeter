@@ -8,10 +8,7 @@ import {
 } from "@/components/ui/table";
 import { MOOD_OPTIONS } from "@/lib/moods";
 import type { AggregatedStats, RoleStats } from "@/lib/stats";
-import mood1Logo from "@/assets/mood-1-nicht-gut.svg";
-import mood2Logo from "@/assets/mood-2-eher-nicht-gut.svg";
-import mood3Logo from "@/assets/mood-3-ziemlich-gut.svg";
-import mood4Logo from "@/assets/mood-4-sehr-gut.svg";
+import { cn } from "@/lib/utils";
 
 export interface StatsRow {
   label: string;
@@ -42,13 +39,15 @@ function RoleRow({
   rowLabel,
   roleLabel,
   s,
+  className,
 }: {
   rowLabel: string;
   roleLabel: string;
   s: RoleStats;
+  className?: string;
 }) {
   return (
-    <TableRow>
+    <TableRow className={cn(className)}>
       <TableCell className="font-medium">{rowLabel}</TableCell>
       <TableCell>{roleLabel}</TableCell>
       {MOOD_OPTIONS.map((m) => (
@@ -91,35 +90,11 @@ export function StatsTable({
               key={m.value}
               className="text-center"
             >
-              {m.value === 1 && (
-                <img
-                  src={mood1Logo}
-                  alt={m.label}
-                  className="size-14"
-                />
-              )}
-
-              {m.value === 2 && (
-                <img
-                  src={mood2Logo}
-                  alt={m.label}
-                  className="size-14"
-                />
-              )}
-              {m.value === 3 && (
-                <img
-                  src={mood3Logo}
-                  alt={m.label}
-                  className="size-14"
-                />
-              )}
-              {m.value === 4 && (
-                <img
-                  src={mood4Logo}
-                  alt={m.label}
-                  className="size-14"
-                />
-              )}
+              <img
+                src={m.svg}
+                alt={m.label}
+                className="size-14 mx-auto"
+              />
             </TableHead>
           ))}
           <TableHead className="text-center">Gesamt</TableHead>
@@ -151,6 +126,7 @@ export function StatsTable({
           <>
             {ROLES.map((r) => (
               <RoleRow
+                className="border-t-4"
                 key={`summary-${r.key}`}
                 rowLabel={summaryLabel}
                 roleLabel={r.label}

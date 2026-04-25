@@ -59,10 +59,10 @@ function RoleCard({ emoji, title, disabled, onClick }: RoleCardProps) {
         disabled && "opacity-50 cursor-not-allowed",
       )}
     >
-      <Card className="h-full">
-        <CardContent className="flex flex-col items-center justify-center p-10 gap-4">
+      <Card className="bg-white/50 shadow-lg hover:bg-white/70 h-full">
+        <CardContent className="flex flex-col items-center justify-center p-10 gap-4 ">
           <span
-            className="text-7xl"
+            className="text-8xl"
             aria-hidden
           >
             {emoji}

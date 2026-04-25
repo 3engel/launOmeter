@@ -25,18 +25,18 @@ export function LockScreen({ onDone }: Props) {
   }, [onDone])
 
   return (
-    <div className="flex flex-col items-center justify-center gap-10 min-h-[70vh] p-6 text-center">
+    <div className="flex flex-col items-center justify-center gap-10 p-6 text-center">
       <span className="text-9xl" aria-hidden>
         🌟
       </span>
       <h1 className="text-5xl font-semibold tracking-tight">
         Viel Spaß in der Schule!
       </h1>
-      <p className="text-xl text-muted-foreground">Danke für deine Stimme.</p>
-      <div className="text-7xl font-mono tabular-nums text-primary">
+      <p className="text-3xl text-muted-foreground">Danke für deine Stimme.</p>
+      <div className="text-7xl font-mono tabular-nums text-primary bg-white border-2 rounded-full w-20 h-20">
         {remaining}
       </div>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground">
         Sekunden bis zur nächsten Stimmabgabe
       </p>
     </div>

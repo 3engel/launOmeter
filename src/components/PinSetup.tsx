@@ -7,10 +7,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { hashPin } from "@/lib/crypto"
 import { setSetting } from "@/lib/db"
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp"
+import { REGEXP_ONLY_DIGITS } from "input-otp"
 
 interface Props {
   onDone: () => void
@@ -25,8 +30,8 @@ export function PinSetup({ onDone }: Props) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setError(null)
-    if (pin.length < 4) {
-      setError("Die PIN muss mindestens 4 Stellen haben.")
+    if (pin.length !== 6) {
+      setError("Die PIN muss genau 6 Stellen haben.")
       return
     }
     if (pin !== confirm) {
@@ -50,36 +55,63 @@ export function PinSetup({ onDone }: Props) {
           <CardTitle>Admin-PIN festlegen</CardTitle>
           <CardDescription>
             Beim ersten Aufruf des Admin-Bereichs musst du eine PIN festlegen.
-            Mindestens 4 Stellen.
+            Genau 6 Ziffern.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
               <Label htmlFor="pin">Neue PIN</Label>
-              <Input
-                id="pin"
-                type="password"
-                inputMode="numeric"
-                autoComplete="new-password"
-                value={pin}
-                onChange={(e) => setPin(e.target.value)}
-                autoFocus
-              />
+              <div className="flex justify-center">
+                <InputOTP
+                  id="pin"
+                  maxLength={6}
+                  minLength={6}
+                  pattern={REGEXP_ONLY_DIGITS}
+                  value={pin}
+                  onChange={setPin}
+                  pushPasswordManagerStrategy="none"
+                  autoFocus
+                >
+                  <InputOTPGroup>
+                    <InputOTPSlot index={0} mask className="w-12 h-16" />
+                    <InputOTPSlot index={1} mask className="w-12 h-16" />
+                    <InputOTPSlot index={2} mask className="w-12 h-16" />
+                    <InputOTPSlot index={3} mask className="w-12 h-16" />
+                    <InputOTPSlot index={4} mask className="w-12 h-16" />
+                    <InputOTPSlot index={5} mask className="w-12 h-16" />
+                  </InputOTPGroup>
+                </InputOTP>
+              </div>
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="confirm">PIN wiederholen</Label>
-              <Input
-                id="confirm"
-                type="password"
-                inputMode="numeric"
-                autoComplete="new-password"
-                value={confirm}
-                onChange={(e) => setConfirm(e.target.value)}
-              />
+              <div className="flex justify-center">
+                <InputOTP
+                  id="confirm"
+                  maxLength={6}
+                  minLength={6}
+                  pattern={REGEXP_ONLY_DIGITS}
+                  value={confirm}
+                  onChange={setConfirm}
+                  pushPasswordManagerStrategy="none"
+                >
+                  <InputOTPGroup>
+                    <InputOTPSlot index={0} mask className="w-12 h-16" />
+                    <InputOTPSlot index={1} mask className="w-12 h-16" />
+                    <InputOTPSlot index={2} mask className="w-12 h-16" />
+                    <InputOTPSlot index={3} mask className="w-12 h-16" />
+                    <InputOTPSlot index={4} mask className="w-12 h-16" />
+                    <InputOTPSlot index={5} mask className="w-12 h-16" />
+                  </InputOTPGroup>
+                </InputOTP>
+              </div>
             </div>
             {error && <p className="text-sm text-destructive">{error}</p>}
-            <Button type="submit" disabled={busy}>
+            <Button
+              type="submit"
+              disabled={busy || pin.length !== 6 || confirm.length !== 6}
+            >
               {busy ? "Speichern..." : "PIN speichern"}
             </Button>
           </form>

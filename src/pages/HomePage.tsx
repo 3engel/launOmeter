@@ -150,7 +150,7 @@ export function HomePage() {
           {view === "lock" && <LockScreen onDone={() => void refresh()} />}
           {view === "full" && <QuotaFullScreen />}
         </div>
-        <aside className="hidden lg:flex w-80 shrink-0 p-6 items-start justify-center">
+        <aside className="hidden lg:flex w-70 shrink-0 p-6 items-center justify-center">
           <MoodBarometer
             refreshKey={voteTick}
             className="w-full"

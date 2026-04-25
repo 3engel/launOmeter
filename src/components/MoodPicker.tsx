@@ -2,11 +2,6 @@ import { MOOD_OPTIONS } from "@/lib/moods";
 import type { Mood, Role } from "@/lib/db";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-
-import mood1Logo from "@/assets/mood-1-nicht-gut.svg";
-import mood2Logo from "@/assets/mood-2-eher-nicht-gut.svg";
-import mood3Logo from "@/assets/mood-3-ziemlich-gut.svg";
-import mood4Logo from "@/assets/mood-4-sehr-gut.svg";
 import { ArrowLeft } from "lucide-react";
 
 interface Props {
@@ -27,56 +22,30 @@ export function MoodPicker({ role, onPick, onCancel }: Props) {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-5xl">
         {MOOD_OPTIONS.map((m) => (
-          <button
+          <Button
             key={m.value}
             type="button"
             onClick={() => onPick(m.value)}
             className={cn(
-              "rounded-2xl border-2 p-8 flex flex-col items-center gap-4 transition-transform",
+              "rounded-2xl border-2 p-8 flex flex-col items-center gap-4 transition-transform h-auto min-h-44 whitespace-normal text-center text-black text-base leading-snug",
               "hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
               m.color,
             )}
           >
-            {m.value === 1 && (
-              <img
-                src={mood1Logo}
-                alt={m.label}
-                className="h-20 w-20"
-              />
-            )}
+            <img
+              src={m.svg}
+              alt={m.label}
+              className="h-20 w-20"
+            />
 
-            {m.value === 2 && (
-              <img
-                src={mood2Logo}
-                alt={m.label}
-                className="h-20 w-20"
-              />
-            )}
-            {m.value === 3 && (
-              <img
-                src={mood3Logo}
-                alt={m.label}
-                className="h-20 w-20"
-              />
-            )}
-            {m.value === 4 && (
-              <img
-                src={mood4Logo}
-                alt={m.label}
-                className="h-20 w-20"
-              />
-            )}
-            <span className="text-xl font-medium text-center text-foreground">
-              {m.label}
-            </span>
-          </button>
+            <span>{m.label}</span>
+          </Button>
         ))}
       </div>
       <Button
-        variant="ghost"
         size="lg"
-        className="text-xl"
         onClick={onCancel}
+        className="text-xl py-6 px-4 "
       >
         <ArrowLeft />
         Zurück

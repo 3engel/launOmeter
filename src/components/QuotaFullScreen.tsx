@@ -1,6 +1,6 @@
 export function QuotaFullScreen() {
   return (
-    <div className="flex flex-col items-center justify-center gap-8 min-h-[70vh] p-6 text-center">
+    <div className="flex flex-col items-center justify-center gap-8 p-6 text-center">
       <span className="text-9xl" aria-hidden>
         ✅
       </span>
