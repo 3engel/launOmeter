@@ -202,6 +202,7 @@ function AdminDashboard({
                   onChange={onSettingsChange}
                 />
               )}
+              {section === "info" && <InfoSection />}
               {section === "danger" && <DangerZone />}
             </div>
           </main>
@@ -214,6 +215,7 @@ function AdminDashboard({
 const SECTION_TITLES: Record<AdminSection, string> = {
   stats: "Statistik",
   settings: "Einstellungen",
+  info: "Anleitung",
   danger: "Gefahrenzone",
 };
 
@@ -596,6 +598,205 @@ function DayStats() {
         </Dialog>
       </div>
       <StatsTable rows={rows} />
+    </div>
+  );
+}
+
+function InfoSection() {
+  return (
+    <div className="flex flex-col gap-4">
+      <Card>
+        <CardHeader>
+          <CardTitle>Was ist LaunOmeter?</CardTitle>
+          <CardDescription>
+            LaunOmeter ist eine Webanwendung zur anonymen Erfassung der
+            Stimmungslage in einer Schulklasse oder Gruppe. Schüler:innen und
+            Lehrkräfte geben mit einem Klick ihre aktuelle Stimmung ab. Alle
+            Daten werden ausschließlich lokal im Browser gespeichert – es
+            werden keine Daten an Server oder Dritte übertragen.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Stimmabgabe</CardTitle>
+          <CardDescription>
+            So gibst du eine Stimme ab.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-3 text-sm">
+          <ol className="list-decimal pl-6 space-y-2">
+            <li>
+              Auf der Startseite die <strong>Rolle</strong> wählen –
+              Schüler:in oder Lehrkraft.
+            </li>
+            <li>
+              Eine der vier <strong>Stimmungen</strong> auswählen: „nicht gut“,
+              „eher nicht gut“, „ziemlich gut“ oder „sehr gut“.
+            </li>
+            <li>
+              Nach der Abgabe wird das Gerät kurz <strong>gesperrt</strong>,
+              damit nicht versehentlich mehrfach abgestimmt wird. Die Sperrzeit
+              ist in den Einstellungen konfigurierbar.
+            </li>
+            <li>
+              Sobald das Tageslimit für eine Rolle erreicht ist, kann diese
+              Rolle nicht mehr abstimmen. Sind beide Limits erreicht, erscheint
+              eine entsprechende Meldung.
+            </li>
+          </ol>
+          <p className="text-muted-foreground">
+            Das <strong>Stimmungsbarometer</strong> rechts auf der Startseite
+            zeigt fortlaufend die aggregierte Stimmung des laufenden Tages an.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Adminbereich öffnen</CardTitle>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-3 text-sm">
+          <ul className="list-disc pl-6 space-y-2">
+            <li>
+              Den Adminbereich erreichst du über das <strong>Zahnrad-Symbol</strong>{" "}
+              oben rechts auf der Startseite.
+            </li>
+            <li>
+              Beim ersten Aufruf wird eine <strong>6-stellige PIN</strong>{" "}
+              festgelegt. Diese PIN schützt anschließend den Zugang.
+            </li>
+            <li>
+              Über <strong>Abmelden</strong> wird die Sitzung beendet, beim
+              nächsten Aufruf ist die PIN erneut erforderlich.
+            </li>
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Bereich „Statistik“</CardTitle>
+          <CardDescription>
+            Auswertung der abgegebenen Stimmen.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-3 text-sm">
+          <ul className="list-disc pl-6 space-y-2">
+            <li>
+              Drei Ansichten als Reiter: <strong>Tag</strong>,{" "}
+              <strong>Woche</strong> und <strong>Monat</strong>.
+            </li>
+            <li>
+              Für jede Rolle werden die Stimmen je Smiley sowie Anteile in
+              Prozent und ein Durchschnittswert angezeigt.
+            </li>
+            <li>
+              Mit <strong>CSV exportieren</strong> kann der aktuelle Datensatz
+              heruntergeladen und in einer Tabellenkalkulation weiterverarbeitet
+              werden.
+            </li>
+            <li>
+              In der Tagesansicht kann ein einzelner Tag mit{" "}
+              <strong>Tag zurücksetzen</strong> gelöscht werden. Diese Aktion
+              ist nicht umkehrbar.
+            </li>
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Bereich „Einstellungen“</CardTitle>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-3 text-sm">
+          <ul className="list-disc pl-6 space-y-2">
+            <li>
+              <strong>Max. Schüler pro Tag</strong> und{" "}
+              <strong>Max. Lehrer pro Tag</strong> begrenzen die Anzahl der
+              Stimmen je Rolle innerhalb eines Tages. Wert 0 deaktiviert die
+              jeweilige Rolle.
+            </li>
+            <li>
+              <strong>Sperre nach Stimme (Sekunden)</strong> legt fest, wie
+              lange das Gerät nach jeder Stimmabgabe gesperrt bleibt.
+            </li>
+            <li>
+              Über <strong>PIN ändern</strong> kann die Admin-PIN jederzeit
+              neu gesetzt werden.
+            </li>
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Bereich „Gefahrenzone“</CardTitle>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-3 text-sm">
+          <p>
+            Hier können <strong>alle</strong> bisher abgegebenen Stimmen
+            unwiderruflich gelöscht werden. Einstellungen und PIN bleiben
+            erhalten. Zur Bestätigung muss das Wort <strong>LÖSCHEN</strong>{" "}
+            eingegeben werden.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Datenschutz &amp; Speicherung</CardTitle>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-3 text-sm">
+          <ul className="list-disc pl-6 space-y-2">
+            <li>
+              Alle Stimmen, Einstellungen und die PIN werden ausschließlich{" "}
+              <strong>lokal im Browser</strong> (IndexedDB) gespeichert.
+            </li>
+            <li>
+              Es findet <strong>keine Datenübertragung</strong> an Server oder
+              Dritte statt.
+            </li>
+            <li>
+              Wird der Browser-Speicher gelöscht oder ein anderes Gerät
+              verwendet, sind die Daten dort nicht verfügbar.
+            </li>
+            <li>
+              Die Stimmen werden anonym erfasst – es werden keine Namen oder
+              persönlichen Informationen gespeichert.
+            </li>
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Tipps für den Schulalltag</CardTitle>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-3 text-sm">
+          <ul className="list-disc pl-6 space-y-2">
+            <li>
+              Die App eignet sich gut für ein <strong>festes Tablet</strong>{" "}
+              im Klassenraum, an dem Schüler:innen am Tagesbeginn oder -ende
+              kurz abstimmen.
+            </li>
+            <li>
+              Über die <strong>Vollbild-Schaltfläche</strong> oben rechts auf
+              der Startseite lässt sich der Kioskmodus aktivieren.
+            </li>
+            <li>
+              Die Tageslimits sollten ungefähr zur Klassen- bzw.
+              Kollegiumsgröße passen, damit niemand „leer ausgeht“ und
+              Mehrfachabgaben begrenzt bleiben.
+            </li>
+            <li>
+              Für eine längere Auswertung empfiehlt sich der regelmäßige{" "}
+              <strong>CSV-Export</strong>, da die Daten nur lokal vorliegen.
+            </li>
+          </ul>
+        </CardContent>
+      </Card>
     </div>
   );
 }

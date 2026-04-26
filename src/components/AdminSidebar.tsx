@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import {
   BarChart3,
+  BookOpen,
   Settings as SettingsIcon,
   ShieldAlert,
   LogOut,
@@ -20,7 +21,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 
-export type AdminSection = "stats" | "settings" | "danger";
+export type AdminSection = "stats" | "settings" | "info" | "danger";
 
 interface NavItem {
   key: AdminSection;
@@ -31,6 +32,7 @@ interface NavItem {
 const ITEMS: NavItem[] = [
   { key: "stats", label: "Statistik", icon: BarChart3 },
   { key: "settings", label: "Einstellungen", icon: SettingsIcon },
+  { key: "info", label: "Anleitung", icon: BookOpen },
   { key: "danger", label: "Gefahrenzone", icon: ShieldAlert },
 ];
 
