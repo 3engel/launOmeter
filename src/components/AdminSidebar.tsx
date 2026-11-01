@@ -130,6 +130,12 @@ export function AdminSidebar({
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
+        <p
+          className="px-2 text-xs text-muted-foreground group-data-[collapsible=icon]:hidden"
+          title={`Commit ${__APP_COMMIT__}`}
+        >
+          Version {__APP_VERSION__} ({__APP_COMMIT__})
+        </p>
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
