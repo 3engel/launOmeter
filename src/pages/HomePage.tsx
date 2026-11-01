@@ -21,6 +21,23 @@ import { Fullscreen, Settings } from "lucide-react";
 
 type View = "loading" | "role" | "mood" | "lock" | "full";
 
+async function loadStatus(): Promise<{
+  view: View;
+  studentDisabled: boolean;
+  teacherDisabled: boolean;
+}> {
+  const [settings, counts] = await Promise.all([
+    getSettings(),
+    getDailyCounts(getDayKey(new Date())),
+  ]);
+  const studentDisabled = counts.student >= settings.maxStudents;
+  const teacherDisabled = counts.teacher >= settings.maxTeachers;
+  let view: View = "role";
+  if (getRemainingLockMs() > 0) view = "lock";
+  else if (studentDisabled && teacherDisabled) view = "full";
+  return { view, studentDisabled, teacherDisabled };
+}
+
 export function HomePage() {
   const [view, setView] = useState<View>("loading");
   const [role, setRole] = useState<Role | null>(null);
@@ -38,25 +55,15 @@ export function HomePage() {
     }
   };
 
-  const refresh = useCallback(async () => {
-    if (getRemainingLockMs() > 0) {
-      setView("lock");
-      return;
-    }
-    const [settings, counts] = await Promise.all([
-      getSettings(),
-      getDailyCounts(getDayKey(new Date())),
-    ]);
-    const sFull = counts.student >= settings.maxStudents;
-    const tFull = counts.teacher >= settings.maxTeachers;
-    setStudentDisabled(sFull);
-    setTeacherDisabled(tFull);
-    if (sFull && tFull) {
-      setView("full");
-      return;
-    }
-    setView("role");
-  }, []);
+  const refresh = useCallback(
+    () =>
+      loadStatus().then((s) => {
+        setStudentDisabled(s.studentDisabled);
+        setTeacherDisabled(s.teacherDisabled);
+        setView(s.view);
+      }),
+    [],
+  );
 
   useEffect(() => {
     void refresh();

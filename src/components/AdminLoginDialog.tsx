@@ -26,11 +26,17 @@ interface Props {
 export function AdminLoginDialog({ open, onOpenChange }: Props) {
   const [mode, setMode] = useState<Mode>("loading");
   const [pinHash, setPinHash] = useState<string | undefined>();
+  const [prevOpen, setPrevOpen] = useState(open);
   const navigate = useNavigate();
+
+  // Reset to "loading" whenever the dialog is (re)opened
+  if (open !== prevOpen) {
+    setPrevOpen(open);
+    if (open) setMode("loading");
+  }
 
   useEffect(() => {
     if (!open) return;
-    setMode("loading");
     let alive = true;
     (async () => {
       const s = await getSettings();
